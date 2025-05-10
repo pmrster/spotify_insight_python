@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login to Spotify account</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto Sans Thai"
+      rel="stylesheet"
+    />
+    <!-- <style>
+      {{ css }}
+    </style> -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+
+  <body>
+    <!-- user name -->
+    <section>
+      <div class="user_profile_section">
+        <div
+          style="
+            height: 64px;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 24px;
+            display: flex;
+          "
+        >
+          <div
+            style="
+              justify-content: flex-start;
+              align-items: center;
+              gap: 24px;
+              display: inline-flex;
+            "
+          >
+            <div class="user_profile_img_frame">
+              <img
+                style="width: 64px; height: 64px"
+                src="{{ user_data['user_img_url'] }}"
+              />
+            </div>
+            <div class="user_name_text">
+              <div class="user_display_name">
+                {{ user_data['user_display_name'] }}
+              </div>
+              <div class="user_id">@{{ user_data['user_id'] }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- top artist -->
+    <section>
+      <div class="top-artist-section">
+        <div
+          style="
+            background-color: #1db954;
+            color: white;
+            font-weight: 700;
+            border-radius: 30px;
+            padding-left: 12px;
+            padding-right: 12px;
+          "
+        >
+          My Top 10 Artists
+        </div>
+        <div class="top-artist-list">
+          {% for top_artist in top_artist_data[0:10] %}
+          <div class="top-artist-data">
+            <div class="row-no-data">{{ top_artist['no'] }}</div>
+            <div class="row_img_frame">
+              <img
+                style="width: 48px; height: 48px"
+                src="{{ top_artist['artist_img'] }}"
+              />
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: flex-start;
+                gap: 4px;
+                flex-direction: column;
+              "
+            >
+              <div class="row-artist-name">{{ top_artist['artist_name'] }}</div>
+              <!-- genres -->
+              <div class="row-data-genres">
+                <div>genres:</div>
+                {% for artist_genres_i in top_artist['artist_genres'] %}
+                <div class="data_chip">{{ artist_genres_i }}</div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- top track -->
+    <section>
+      <div class="top-track-section">
+        <div
+          style="
+            background-color: #1db954;
+            color: white;
+            font-weight: 700;
+            border-radius: 30px;
+            padding-left: 12px;
+            padding-right: 12px;
+          "
+        >
+          My Top 10 Tracks
+        </div>
+        <div class="top-artist-list">
+          {% for top_track in top_track_data[0:10] %}
+          <div class="top-track-data">
+            <div class="row-no-data">{{ top_track['no'] }}</div>
+            <div class="row_img_frame">
+              <img
+                style="width: 48px; height: 48px"
+                src="{{ top_track['album_img'] }}"
+              />
+            </div>
+            <div
+              style="
+                width: -webkit-fill-available;
+                display: flex;
+                justify-content: space-between;
+                gap: 4px;
+                flex-direction: row;
+                align-items: center;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: flex-start;
+                  gap: 4px;
+                  flex-direction: column;
+                "
+              >
+                <div
+                  class="row-track-name"
+                  style="font-weight: bold; color: #1db954"
+                >
+                  {{ top_track['track_name'] }}
+                </div>
+                <div style="font-size: 14px; color: #b3b3b3">
+                  {{ top_track['artist_name'] }}
+                </div>
+              </div>
+              <div style="color: #b3b3b3; font-weight: bold">
+                {{ top_track['track_duration_ms'] }}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <p><a href="{{ url_for('login_page') }}">Logout</a></p>
+  </body>
+</html>
