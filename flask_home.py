@@ -6,7 +6,7 @@ from urllib.parse import urlencode
 from prep_request import prep_req
 from get_access_token import get_token
 from get_data import GetSpotifyUserData
-from render_template import RenderTemplateFile
+# from render_template import RenderTemplateFile
 
 app = Flask(__name__)
 
