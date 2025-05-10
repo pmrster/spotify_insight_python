@@ -4,11 +4,19 @@ This project is my tiny web app that will provide users with their Spotify liste
 
 
 
+<img src="20250511_sample_top_artist.jpg" alt="Sample_1" width="200"/>
+<img src="20250511_sample_top_tracks.jpg" alt="Sample_2" height="433.6"/>
+
+
+
 ### Key features
 - **Authentication** : request access to get spotify data from user.
 - **User Profile** : display user profile image, display name, and id
 - **Top Artists** : display user top artists in past 6 months.
+   
+   
 - **Top Tracks** : display user top songs in past 6 months.
+
 
 
 ### To be develop
