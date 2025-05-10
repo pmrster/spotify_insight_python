@@ -98,10 +98,3 @@ class GetSpotifyUserData:
         
 
 
-
-
-
-# if __name__ == "__main__":
-#     # GetSpotifyUserData(access_token = access_token_manual).get_user_profile()
-#     # GetSpotifyUserData(access_token = access_token_manual).get_top_artist_6m()
-#     GetSpotifyUserData(access_token = access_token_manual).get_top_track_6m()
