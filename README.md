@@ -20,5 +20,5 @@ This project is my tiny web app that will provide users with their Spotify liste
 
 
 ### To be develop
-- get all song from user playlist ( to analysxe their behavior)
+- get all song from user playlist ( to analyse their behavior)
 - get all playlists
