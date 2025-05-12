@@ -1,7 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 from jinja2 import Environment, FileSystemLoader
-from get_data import GetSpotifyUserData
+from spotify.get_data import GetSpotifyUserData
 from render_template import RenderTemplateFile
 
 st.set_page_config(page_title="My Spotify data", page_icon="🎧",layout="wide")
