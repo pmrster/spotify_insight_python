@@ -9,13 +9,12 @@ import uvicorn
 
 from datetime import datetime
 
-from prep_request import prep_req
-from get_access_token import get_token
+from prepare_data.prep_request import prep_req
+from spotify.get_access_token import get_token
 
 load_dotenv()
 
 access_token_manual = os.environ.get("SPOTIFY_ACCESS_TOKEN_MANUAL")
-
 
 ### 
 # uvicorn test_login:app --reload --host 0.0.0.0 --port 5173

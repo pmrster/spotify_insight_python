@@ -2,10 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import os
 import requests
 from urllib.parse import urlencode
+from dotenv import load_dotenv
 
-from prep_request import prep_req
-from get_access_token import get_token
-from get_data import GetSpotifyUserData
+from prepare_data.prep_request import prep_req
+from spotify.get_access_token import get_token
+from spotify.get_data import GetSpotifyUserData
 # from render_template import RenderTemplateFile
 
 app = Flask(__name__)
@@ -16,7 +17,9 @@ app.secret_key = os.urandom(24)  # Important for session management
 prep_data = prep_req()
 
 
-redirect_uri = "https://rich-foal-regularly.ngrok-free.app/callback"
+load_dotenv()
+redirect_uri = os.environ.get("REDIRECT_URI")
+    
 
 
 SPOTIPY_API_BASE_URL = "https://api.spotify.com/v1"
