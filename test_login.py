@@ -3,15 +3,8 @@ import os
 from dotenv import load_dotenv
 import os 
 from fastapi import FastAPI, Request, responses
-from fastapi.responses import HTMLResponse
-from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse
-import secrets
-import base64
-import hashlib
 from urllib.parse import urlencode
-from urllib.parse import urlparse, parse_qs
 import uvicorn
 
 from datetime import datetime
@@ -24,7 +17,7 @@ load_dotenv()
 access_token_manual = os.environ.get("SPOTIFY_ACCESS_TOKEN_MANUAL")
 
 
- ### 
+### 
 # uvicorn test_login:app --reload --host 0.0.0.0 --port 5173
 
 app = FastAPI(debug=True)
@@ -60,10 +53,10 @@ async def root():
         'client_id': prep_data["client_id"],
         'scope': scope,
         'code_challenge_method': 'S256',
-        'code_challenge': prep_data["code_challenge"],  # Replace with your generated code_challenge
+        'code_challenge': prep_data["code_challenge"],
         'redirect_uri': redirect_uri,
     }
-    # Build the query string using urlencod
+    
     query_string = urlencode(params)
     
     spotify_auth_url = f"{auth_url}?{query_string}"
@@ -102,9 +95,7 @@ async def callback(request: Request, code: str):
 
     else:
         print("Code parameter not found in the URL.")
-
-
-    return {"message": "Login successful (or failed)"}  # Replace with appropriate response
+        return {"message": "Login failed"}  
 
 
 
@@ -127,10 +118,11 @@ def get_token(code, code_verifier, client_id, redirect_uri):
         response_data = response.json()
         print("[RESPONSE FROM GET TOKEN]: ", response_data)
         print("[ACCESS TOKEN]: ", response_data["access_token"])
+        return response_data["access_token"]
     except Exception as e:
         print("get error on access token request :", e)
 
-    return response_data["access_token"]
+    
 
 
 
@@ -166,5 +158,3 @@ async def callback(request: Request, access_token: str = None):
 
 if __name__ == "__main__":
     uvicorn.run(app, port=8000)
-    
-#, host="0.0.0.0"

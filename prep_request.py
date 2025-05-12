@@ -22,13 +22,12 @@ def sha256(plain):
     return hashlib.sha256(data).digest()
     # return hashlib.sha256(data).hexdigest()
 
-# def base64encode(input):
-#     return base64.urlsafe_b64encode(input).decode('utf-8').rstrip('=')
+
 
 def base64encode(input_bytes):
-    # Base64 encode the input bytes
+    
     encoded = base64.b64encode(input_bytes).decode('utf-8')
-    # Apply URL-safe replacements and remove any padding
+    
     return encoded.replace('+', '-').replace('/', '_').rstrip('=')
 
 

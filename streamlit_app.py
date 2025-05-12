@@ -18,18 +18,12 @@ if 'spotify_top_track_data' not in st.session_state:
 #######
 
 st.title("Spotify Data App")
-st.caption("update: 2024.10.13 6:41AM")
+st.caption("update: 2025.11.10")
 
  
 st.write()
  
 access_token = st.text_input(label="spotify access token", type="password")
-
-# login_request = st.button(label="Login to spotify", icon="🎧", disabled=False, use_container_width=False)
-
-# if login_request:
-#     ## go to login page
-    
 
 
 

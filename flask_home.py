@@ -24,8 +24,6 @@ SPOTIPY_API_BASE_URL = "https://api.spotify.com/v1"
 @app.route("/")
 def login_page():
     print("this is main page")
-    # template_loader = RenderTemplateFile().render_template_home()
-    # render_template(template_loader)
     return render_template('home.html')
 
 
@@ -37,7 +35,6 @@ def login():
     scope = "user-read-private user-read-email user-top-read playlist-read-private user-read-currently-playing user-follow-read user-library-read"
     auth_url = "https://accounts.spotify.com/authorize"
     
-    # prep_data = prep_req()
     params = {
         "response_type": "code",
         "client_id": prep_data["client_id"],
@@ -107,26 +104,6 @@ def my_dashboard():
 
     return render_template("my_dashboard.html",user_data=user_data,top_artist_data=res_top_artist_data,top_track_data=res_top_track_data)
 
-
-
-
-
-
-
-# @app.route('/top_artists')
-# def top_artists():
-#     access_token = session.get('access_token')
-#     if not access_token:
-#         return redirect(url_for('homepage'))
-
-#     headers = {'Authorization': f'Bearer {access_token}'}
-
-#     # Get user's top artists
-#     top_artists_response = requests.get(f'{SPOTIPY_API_BASE_URL}/me/top/artists?limit=10&time_range=short_term', headers=headers)
-#     top_artists_response.raise_for_status()
-#     top_artists = top_artists_response.json()['items']
-
-#     return render_template('top_artists.html', top_artists=top_artists)
 
 
 
