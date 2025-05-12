@@ -22,7 +22,7 @@ access_token_manual = os.environ.get("SPOTIFY_ACCESS_TOKEN_MANUAL")
 app = FastAPI(debug=True)
 
 
-redirect_uri = 'https://rich-foal-regularly.ngrok-free.app/callback'
+redirect_uri = os.environ.get("REDIRECT_URI")
 
 
 prep_data = prep_req()
