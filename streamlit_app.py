@@ -17,8 +17,8 @@ if 'spotify_top_track_data' not in st.session_state:
 
 #######
 
-st.title("Spotify Data App")
-st.caption("update: 2025.11.10")
+st.title("Spotify Insight🎧")
+# st.caption("update: 2025.11.10")
 
  
 st.write()
