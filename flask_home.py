@@ -11,8 +11,7 @@ from spotify.get_data import GetSpotifyUserData
 
 app = Flask(__name__)
 
-app.secret_key = os.urandom(24)  # Important for session management
-
+app.secret_key = os.urandom(24) 
 
 prep_data = prep_req()
 
