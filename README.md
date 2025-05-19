@@ -4,7 +4,7 @@ This repository is my tiny web app project that will provide us with our spotify
 
 
 
-<img src="20250511_demo_mobile.png" alt="[mobile_sample" height="500"/>
+<img src="20250511_demo_mobile.png" alt="[mobile_sample" max-height="500"/>
 
 
 
