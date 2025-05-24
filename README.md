@@ -3,10 +3,7 @@
 This repository is my tiny web app project that will provide us with our spotify listening habits insight using **python, flask, jinja (with a little bit HTML/CSS), streamlit and spotify web API** to get spotify data, analyse, and display insight. This was built from desire of knowing my music listening behavior by not just waiting for official SpotifyWrapped at the end of each year. 
 
 
-
 <img src="20250511_demo_mobile.png" alt="mobile_sample" max-height="500"/>
-
-
 
 
 ## Features
