@@ -11,6 +11,7 @@ from spotify.get_data import GetSpotifyUserData
 
 from prepare_data.saved_track_data import get_total_track_by_day_chart
 
+
 app = Flask(__name__)
 
 app.secret_key = os.urandom(24)  
