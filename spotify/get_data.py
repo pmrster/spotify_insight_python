@@ -94,7 +94,42 @@ class GetSpotifyUserData:
         transformed_data = TransformSpotifyResponse(data).transform_top_track_data()
         
         return transformed_data
+
+    def get_saved_track(self):
+        print("get user saved tracks")
+        
+        endpoint = "https://api.spotify.com/v1/me/tracks"
+        headers = {
+            "Authorization": f"Bearer {self.access_token}"
+        }
         
         
-
-
+        ## run to get all tracks
+        ##check if this len() = 50 will request again
+        
+        # data = []
+        # checker =
+        
+        params = {
+            "offset": 0,
+            "market": "TH",
+            "limit": 50
+        }
+        response = requests.get(endpoint, headers=headers,params=params)
+        
+        print("[RESPONSE CODE]: ", response.status_code)
+        print("[RESPONSE]: ", response.text)
+        data = response.json()
+        print(data)
+        
+        file_name = f"{datetime.now().strftime('%Y.%m.%d_%H%M%S')}_spotify_user_saved_track.json"
+        with open(f"response_data/{file_name}", "w", encoding='utf-8') as f:
+            json_string = json.dumps(data, indent=4,ensure_ascii=False)
+            f.write(json_string) 
+            
+            
+        transformed_data = TransformSpotifyResponse(data).transform_saved_tracks()
+        
+        return transformed_data
+        
+        
