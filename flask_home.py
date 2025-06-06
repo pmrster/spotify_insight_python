@@ -8,13 +8,12 @@ from prepare_data.prep_request import prep_req
 from spotify.get_access_token import get_token
 from spotify.get_data import GetSpotifyUserData
 
-
 from prepare_data.saved_track_data import get_total_track_by_day_chart
 
 
 app = Flask(__name__)
 
-app.secret_key = os.urandom(24)  
+app.secret_key = os.urandom(24) 
 
 prep_data = prep_req()
 
