@@ -1,9 +1,12 @@
 # My Spotify insight🎧
 
-This repository is my tiny web app project that will provide us with our spotify listening habits insight using **python, flask, jinja (with a little bit HTML/CSS), streamlit and spotify web API** to get spotify data, analyse, and display insight. This was built from desire of knowing my music listening behavior by not just waiting for official SpotifyWrapped at the end of each year. 
+This repository is my tiny web app project that will provide us with our spotify listening habits insight using **python, flask, jinja (with a little bit HTML/CSS), streamlit, plotly and spotify web API** to get spotify data, analyse, and display insight. This was built from desire of knowing my music listening behavior by not just waiting for official SpotifyWrapped at the end of each year. 
 
 
 <img src="20250511_demo_mobile.png" alt="mobile_sample" max-height="500"/>
+
+
+<img src="image.png" alt="saved_tracks_chart" max-height="500"/>
 
 
 ## Features
@@ -11,7 +14,7 @@ This repository is my tiny web app project that will provide us with our spotify
 - **User Profile** : display user profile image, display name, and id
 - **Top Artists** : display user top artists in past 6 months.
 - **Top Tracks** : display user top songs in past 6 months.
-
+- **Added tracks by day**: display total songs that you saved to library by day using line chart.
 
 <!-- ### To be develop
 - get all song from user playlist ( to analyse their behavior)

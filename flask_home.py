@@ -7,7 +7,9 @@ from dotenv import load_dotenv
 from prepare_data.prep_request import prep_req
 from spotify.get_access_token import get_token
 from spotify.get_data import GetSpotifyUserData
-# from render_template import RenderTemplateFile
+
+from prepare_data.saved_track_data import get_total_track_by_day_chart
+
 
 app = Flask(__name__)
 
@@ -81,7 +83,7 @@ def callback():
 def my_dashboard():
     access_token = session.get("access_token")
     if not access_token:
-        return redirect(url_for("home"))
+        return redirect(url_for("login_page"))
 
     #### get data
     res_user_data = GetSpotifyUserData(access_token = access_token).get_user_profile()
@@ -97,15 +99,35 @@ def my_dashboard():
     
     res_top_track_data = GetSpotifyUserData(access_token = access_token).get_top_track_6m()
     
-    # load_component(user_data,res_top_artist_data,res_top_track_data)
-    
-    
-    # render_template_dashboard(user_data,res_top_artist_data,res_top_track_data)
-
-    #    render_template('profile.html', user=user_profile, top_tracks=top_tracks)
 
     return render_template("my_dashboard.html",user_data=user_data,top_artist_data=res_top_artist_data,top_track_data=res_top_track_data)
 
+
+
+@app.route("/saved_tracks")
+def saved_tracks():
+    access_token = session.get("access_token")
+    if not access_token:
+        return redirect(url_for("login_page"))
+
+    #### get data
+    res_user_data = GetSpotifyUserData(access_token = access_token).get_user_profile()
+    
+    user_data = {
+                "user_id" : res_user_data["id"],
+                "user_display_name" : res_user_data["display_name"],
+                "user_img_url" : res_user_data["images"][0]["url"],
+                
+            } 
+    
+    res_saved_track_data = GetSpotifyUserData(access_token = access_token).get_saved_track()
+    
+
+    graph_html = get_total_track_by_day_chart(res_saved_track_data)
+    
+    
+    # {"response": res_saved_track_data}
+    return render_template("saved_tracks.html", graph_html=graph_html)
 
 
 

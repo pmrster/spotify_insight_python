@@ -51,6 +51,30 @@ class TransformSpotifyResponse:
         print("transformed top artist : ", top_artist_list)
         
         return top_artist_list
+    
+    
+    def transform_saved_tracks(self):
+        saved_track_list = []
+        counter = 0
+        
+        for item in self.data["items"]:
+            counter += 1
+            # print(item)
+            saved_track_list.append({
+                "no" : counter,
+                "added_at" : item["added_at"],
+                "track_name" : item["track"]["name"],
+                "track_id" : item["track"]["id"],
+                "artists": [i["name"] for i in item["track"]["artists"]],
+                "duration_ms": convert_ms_to_mmss(item["track"]["duration_ms"]),
+                "track_uri" : item["track"]["uri"],
+                "album_img" : item["track"]["album"]["images"][1]["url"],
+                
+            })
+        
+        print("transformed saved tracks : ", saved_track_list)
+        
+        return saved_track_list
 
 
 
